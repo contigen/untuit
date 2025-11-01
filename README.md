@@ -76,7 +76,7 @@ The application will be available at `http://localhost:5173`
    - Click "Download PDF"
    - Verify PDF downloads with theme styling applied
 
-### Advanced Features Test
+### Other Features Test
 
 1. **State Persistence**:
    - Generate slides and themes
@@ -89,7 +89,7 @@ The application will be available at `http://localhost:5173`
    - Test pause/resume functionality
 
 3. **Presentation API**:
-   - Use two browser windows/devices
+   - Use two browser windows/devices: an external display
    - Open `/presentation` route in one window (receiver)
    - Start presentation from main application (controller)
    - Verify first slide appears immediately on receiver
