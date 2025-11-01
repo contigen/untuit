@@ -12,8 +12,6 @@ export async function generatePDF(options: ExportOptions) {
   const { jsPDF } = await import('jspdf')
 
   const { slides, selectedStyle, title = 'Presentation' } = options
-
-  // Create PDF with landscape orientation
   const pdf = new jsPDF({
     orientation: 'landscape',
     unit: 'mm',
@@ -24,9 +22,7 @@ export async function generatePDF(options: ExportOptions) {
   const pageHeight = pdf.internal.pageSize.getHeight()
   const margin = 20
   const contentWidth = pageWidth - margin * 2
-  const contentHeight = pageHeight - margin * 2
 
-  // Add title page
   pdf.setFillColor(
     Number.parseInt(selectedStyle.palette[0].substring(1, 3), 16),
     Number.parseInt(selectedStyle.palette[0].substring(3, 5), 16),
@@ -34,7 +30,6 @@ export async function generatePDF(options: ExportOptions) {
   )
   pdf.rect(0, 0, pageWidth, pageHeight, 'F')
 
-  // Add title text
   pdf.setTextColor(255, 255, 255)
   pdf.setFontSize(48)
   pdf.setFont(selectedStyle.font === 'Georgia' ? 'times' : 'helvetica', 'bold')
@@ -47,11 +42,9 @@ export async function generatePDF(options: ExportOptions) {
     align: 'center',
   })
 
-  // Add slides
   for (let i = 0; i < slides.length; i++) {
     pdf.addPage()
 
-    // Background
     pdf.setFillColor(
       Number.parseInt(selectedStyle.palette[0].substring(1, 3), 16),
       Number.parseInt(selectedStyle.palette[0].substring(3, 5), 16),
@@ -59,7 +52,6 @@ export async function generatePDF(options: ExportOptions) {
     )
     pdf.rect(0, 0, pageWidth, pageHeight, 'F')
 
-    // Set text color based on palette
     const textColor = selectedStyle.palette[1]
     pdf.setTextColor(
       Number.parseInt(textColor.substring(1, 3), 16),
@@ -67,14 +59,13 @@ export async function generatePDF(options: ExportOptions) {
       Number.parseInt(textColor.substring(5, 7), 16)
     )
 
-    // Add slide title
     pdf.setFontSize(32)
     pdf.setFont(
       selectedStyle.font === 'Georgia'
         ? 'times'
         : selectedStyle.font === 'Poppins'
-        ? 'helvetica'
-        : 'helvetica',
+          ? 'helvetica'
+          : 'helvetica',
       'bold'
     )
 
@@ -84,14 +75,13 @@ export async function generatePDF(options: ExportOptions) {
 
     yPosition += titleLines.length * 10 + 20
 
-    // Add bullet points
     pdf.setFontSize(16)
     pdf.setFont(
       selectedStyle.font === 'Georgia'
         ? 'times'
         : selectedStyle.font === 'Poppins'
-        ? 'helvetica'
-        : 'helvetica',
+          ? 'helvetica'
+          : 'helvetica',
       'normal'
     )
 
@@ -107,7 +97,6 @@ export async function generatePDF(options: ExportOptions) {
       }
     }
 
-    // Add slide number
     pdf.setFontSize(10)
     pdf.setTextColor(200, 200, 200)
     pdf.text(
