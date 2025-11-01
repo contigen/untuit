@@ -32,8 +32,6 @@ pnpm dev
 
 The application will be available at `http://localhost:5173`
 
-```
-
 ## Testing Instructions
 
 1. **Start the application** using `npm run dev` (or your preferred package manager)
@@ -104,7 +102,6 @@ The application will be available at `http://localhost:5173`
 ## Project Structure
 
 ```
-
 src/
 ├── components/ # React components
 │ ├── input-tab.tsx # Input and slide generation
@@ -119,11 +116,8 @@ src/
 ├── lib/ # Utility functions
 │ └── pdf-export.ts # PDF generation
 └── presentation.tsx # Receiver page for Presentation API
-
 ```
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
-```
